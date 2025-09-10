@@ -72,7 +72,10 @@ class Category extends Model
 {
     use ModelHistoryTrait;
 
-    protected static string $logModel = CategoryLog::class;
+    protected static function logModel(): string
+    {
+        return CategoryLog::class;
+    }
 }
 ```
 

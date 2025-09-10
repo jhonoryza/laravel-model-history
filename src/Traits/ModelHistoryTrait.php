@@ -7,13 +7,12 @@ use Jhonoryza\ModelHistory\Factory\History;
 
 trait ModelHistoryTrait
 {
-    // tentukan log model (misal CategoryLog::class)
-    protected static string $logModel;
+    abstract protected static function logModel(): string;
 
     public static function bootModelHistoryTrait(): void
     {
         static::created(function ($model) {
-            History::make(static::$logModel)
+            History::make(static::logModel())
                 ->model($model)
                 ->changeBy(Auth::id() ?? null)
                 ->new($model->toArray())
@@ -22,7 +21,7 @@ trait ModelHistoryTrait
         });
 
         static::updated(function ($model) {
-            History::make(static::$logModel)
+            History::make(static::logModel())
                 ->model($model)
                 ->changeBy(Auth::id() ?? null)
                 ->old($model->getOriginal())
@@ -32,7 +31,7 @@ trait ModelHistoryTrait
         });
 
         static::deleted(function ($model) {
-            History::make(static::$logModel)
+            History::make(static::logModel())
                 ->model($model)
                 ->changeBy(Auth::id() ?? null)
                 ->old($model->getOriginal())
@@ -41,7 +40,7 @@ trait ModelHistoryTrait
         });
 
         static::restored(function ($model) {
-            History::make(static::$logModel)
+            History::make(static::logModel())
                 ->model($model)
                 ->changeBy(Auth::id() ?? null)
                 ->new($model->toArray())
@@ -50,7 +49,7 @@ trait ModelHistoryTrait
         });
 
         static::forceDeleted(function ($model) {
-            History::make(static::$logModel)
+            History::make(static::logModel())
                 ->model($model)
                 ->changeBy(Auth::id() ?? null)
                 ->old($model->getOriginal())
