@@ -1,6 +1,6 @@
 <?php
 
-namespace Jhonoryza\LaravelModelHistory\Models;
+namespace Jhonoryza\ModelHistory\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

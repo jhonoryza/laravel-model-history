@@ -1,9 +1,9 @@
 <?php
 
-namespace Jhonoryza\LaravelModelHistory;
+namespace Jhonoryza\ModelHistory;
 
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
-use Jhonoryza\LaravelModelHistory\Command\Generator;
+use Jhonoryza\ModelHistory\Command\Generator;
 
 class ServiceProvider extends SupportServiceProvider
 {

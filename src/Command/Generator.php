@@ -1,6 +1,6 @@
 <?php
 
-namespace Jhonoryza\LaravelModelHistory\Command;
+namespace Jhonoryza\ModelHistory\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

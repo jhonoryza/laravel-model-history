@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Auth;
-use Jhonoryza\LaravelModelHistory\Factory\History;
+use Jhonoryza\ModelHistory\Factory\History;
 
 trait ModelHistoryTrait
 {
