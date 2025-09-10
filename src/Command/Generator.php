@@ -76,9 +76,11 @@ PHP;
 
 namespace App\\Models;
 
+use Jhonoryza\ModelHistory\Models\BaseLog;
+
 class {$className} extends BaseLog
 {
-    protected \$table = Str::snake(class_basename(self::class)) . 's';
+    //
 }
 PHP;
 
