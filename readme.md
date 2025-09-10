@@ -1,5 +1,11 @@
 # Laravel Model History
 
+[![Latest Stable Version](http://poser.pugx.org/jhonoryza/laravel-model-history/v)](https://packagist.org/packages/jhonoryza/laravel-model-history)
+[![Total Downloads](http://poser.pugx.org/jhonoryza/laravel-model-history/downloads)](https://packagist.org/packages/jhonoryza/laravel-model-history)
+[![Latest Unstable Version](http://poser.pugx.org/jhonoryza/laravel-model-history/v/unstable)](https://packagist.org/packages/jhonoryza/laravel-model-history)
+[![License](http://poser.pugx.org/jhonoryza/laravel-model-history/license)](https://packagist.org/packages/jhonoryza/laravel-model-history)
+[![PHP Version Require](http://poser.pugx.org/jhonoryza/laravel-model-history/require/php)](https://packagist.org/packages/jhonoryza/laravel-model-history)
+
 This package provides ability to generate `_logs` table from your model.
 
 ## Requirement
