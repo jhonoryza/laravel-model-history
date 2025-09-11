@@ -39,22 +39,24 @@ trait ModelHistoryTrait
                 ->log('Deleted '.class_basename($model));
         });
 
-        static::restored(function ($model) {
-            History::make(static::logModel())
-                ->model($model)
-                ->changeBy(Auth::id() ?? null)
-                ->new($model->toArray())
-                ->operation(History::RESTORE)
-                ->log('Restored '.class_basename($model));
-        });
+        if (in_array(\Illuminate\Database\Eloquent\SoftDeletes::class, class_uses_recursive(static::class))) {
+            static::restored(function ($model) {
+                History::make(static::logModel())
+                    ->model($model)
+                    ->changeBy(Auth::id() ?? null)
+                    ->new($model->toArray())
+                    ->operation(History::RESTORE)
+                    ->log('Restored '.class_basename($model));
+            });
 
-        static::forceDeleted(function ($model) {
-            History::make(static::logModel())
-                ->model($model)
-                ->changeBy(Auth::id() ?? null)
-                ->old($model->getOriginal())
-                ->operation(History::FORCE_DELETE)
-                ->log('Force deleted '.class_basename($model));
-        });
+            static::forceDeleted(function ($model) {
+                History::make(static::logModel())
+                    ->model($model)
+                    ->changeBy(Auth::id() ?? null)
+                    ->old($model->getOriginal())
+                    ->operation(History::FORCE_DELETE)
+                    ->log('Force deleted '.class_basename($model));
+            });
+        }
     }
 }
