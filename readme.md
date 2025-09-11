@@ -159,6 +159,36 @@ Available events :
 | `$model->firstOrCreate()`  | ✅ Yes        | Either `retrieved` OR (`creating`, `created`, `saving`, `saved`) |                                 |
 | `$model->updateOrCreate()` | ✅ Yes        | Either (`updating`, `updated`) OR (`creating`, `created`)        |                                 |
 
+## React Component
+
+there is prebuilt react component in this path
+`resources/js/components/log-panel-history.tsx`.
+
+### Usage
+
+example use in `controller`
+
+```php
+<?php
+
+    public function show(Game $game): Response
+    {
+        return Inertia::render('builder/show', [
+            'form' => GameForm::view($game),
+            'logs' => History::make(GameLog::class)
+                ->getLogs($game->id),
+        ]);
+    }
+```
+
+example use in `edit.tsx`
+
+```tsx
+{
+  logs && logs.length > 0 && <LogHistoryPanel logs={logs} />;
+}
+```
+
 ## Security
 
 If you've found a bug regarding security, please mail
