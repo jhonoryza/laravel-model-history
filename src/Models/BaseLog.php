@@ -25,4 +25,9 @@ abstract class BaseLog extends Model
         'new_data' => 'array',
         'created_at' => 'datetime',
     ];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    {
+        return $this->morphTo(null, 'changed_by_model', 'changed_by');
+    }
 }

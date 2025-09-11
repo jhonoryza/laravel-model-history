@@ -2,7 +2,9 @@
 
 namespace Jhonoryza\ModelHistory\Factory;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection as SupportCollection;
 
 class History
 {
@@ -74,5 +76,22 @@ class History
         $logModel = $this->logModel;
 
         return $logModel::create($this->data);
+    }
+
+    public function getLogs(int $modelId): Collection|SupportCollection
+    {
+        return $this->logModel::where('model_id', $modelId)
+            ->latest()
+            ->with('user:id,name')
+            ->get()
+            ->map(fn ($log) => [
+                'id' => $log->id,
+                'message' => $log->message,
+                'operation' => $log->operation,
+                'changed_by' => $log->user ? ['id' => $log->user->id, 'name' => $log->user->name] : null,
+                'created_at' => $log->created_at->toISOString(),
+                'old_data' => $log->old_data,
+                'new_data' => $log->new_data,
+            ]);
     }
 }
