@@ -35,7 +35,7 @@ class History
         }
 
         $this->data['changed_by'] = is_object($user) ? $user->id : $user;
-        $this->data['changed_by_model'] = is_object($user) ? class_basename($user) : null;
+        $this->data['changed_by_model'] = is_object($user) ? get_class($user) : null;
 
         return $this;
     }
