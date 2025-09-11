@@ -46,6 +46,7 @@ return new class extends Migration {
             \$table->string('message')->nullable();
             \$table->jsonb('old_data')->nullable();
             \$table->jsonb('new_data')->nullable();
+            \$table->string('changed_by_model')->nullable();
             \$table->unsignedBigInteger('changed_by')->nullable();
             \$table->timestampTz('created_at')->useCurrent();
         });

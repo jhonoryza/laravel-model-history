@@ -8,7 +8,17 @@ abstract class BaseLog extends Model
 {
     public $timestamps = false;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'model_id',
+        'operation',
+        'message',
+        'operation',
+        'changed_by_model',
+        'changed_by',
+        'old_data',
+        'new_data',
+        'created_at',
+    ];
 
     protected $casts = [
         'old_data' => 'array',

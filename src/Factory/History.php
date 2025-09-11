@@ -30,7 +30,12 @@ class History
 
     public function changeBy($user): self
     {
+        if ($user == null) {
+            return $this;
+        }
+
         $this->data['changed_by'] = is_object($user) ? $user->id : $user;
+        $this->data['changed_by_model'] = is_object($user) ? class_basename($user) : null;
 
         return $this;
     }
