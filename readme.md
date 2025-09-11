@@ -51,6 +51,15 @@ History::make(CategoryLog::class)
     ->log('Category updated successfully'); // required
 ```
 
+to get all the logs
+
+```php
+<?php
+
+return History::make(CategoryLog::class)
+    ->getLogs($category->id);
+```
+
 ### Detect From Model Event
 
 you can make adding log automatically by detecting from model event
